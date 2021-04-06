@@ -12,6 +12,7 @@ class TddApplicationTests {
         testMultiplication();
     }
 
+    @Test
     public void testMultiplication() {
         Dollar five =  new Dollar(5);
         Dollar product = five.times(2);
@@ -20,6 +21,11 @@ class TddApplicationTests {
         assertEquals(15, product.amount);
     }
 
+    @Test
+    public void testEquality() {
+        assertTrue(new Dollar(5).equals(new Dollar(5)));
+        assertFalse(new Dollar(5).equals(new Dollar(6)));
+    }
 }
 
 //TODO:
@@ -28,3 +34,7 @@ class TddApplicationTests {
 // amount를 private으로 만들기
 // -DONE- Dollar 부작용 (side effect?)
 // Money 반올림?
+// -DONE- equals()
+// hashCode()
+// equal null
+// equal object
