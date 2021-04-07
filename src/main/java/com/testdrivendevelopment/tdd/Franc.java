@@ -1,7 +1,6 @@
 package com.testdrivendevelopment.tdd;
 
-public class Franc {
-    private int amount;
+public class Franc extends Money{
 
     Franc(int amount) {
         this.amount = amount;
@@ -11,9 +10,4 @@ public class Franc {
         return new Franc(amount * multiplier);
     }
 
-    @Override
-    public boolean equals(Object object) {
-        Franc franc = (Franc) object;
-        return amount == franc.amount;
-    }
 }
