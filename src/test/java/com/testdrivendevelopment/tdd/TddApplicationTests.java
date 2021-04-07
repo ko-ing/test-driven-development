@@ -10,6 +10,7 @@ class TddApplicationTests {
     @Test
     void contextLoads() {
         testMultiplication();
+        testFrancMultiplication();
         testEquality();
     }
 
@@ -18,6 +19,13 @@ class TddApplicationTests {
         Dollar five =  new Dollar(5);
         assertEquals(new Dollar(10), five.times(2));
         assertEquals(new Dollar(15), five.times(3));
+    }
+
+    @Test
+    public void testFrancMultiplication() {
+        Franc five =  new Franc(5);
+        assertEquals(new Franc(10), five.times(2));
+        assertEquals(new Franc(15), five.times(3));
     }
 
     @Test
@@ -37,4 +45,6 @@ class TddApplicationTests {
 // hashCode()
 // equal null
 // equal object
-// 5CHF * 2 = 10 CHF
+// -DONE- 5CHF * 2 = 10 CHF
+// 공용 equals
+// 공용 times
