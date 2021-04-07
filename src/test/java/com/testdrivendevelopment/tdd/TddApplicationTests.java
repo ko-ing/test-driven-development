@@ -10,15 +10,14 @@ class TddApplicationTests {
     @Test
     void contextLoads() {
         testMultiplication();
+        testEquality();
     }
 
     @Test
     public void testMultiplication() {
         Dollar five =  new Dollar(5);
-        Dollar product = five.times(2);
-        assertEquals(10, product.amount);
-        product = five.times(3);
-        assertEquals(15, product.amount);
+        assertEquals(new Dollar(10), five.times(2));
+        assertEquals(new Dollar(15), five.times(3));
     }
 
     @Test
@@ -31,10 +30,11 @@ class TddApplicationTests {
 //TODO:
 // $5 + 10CHF = $10 (환율이 2:1일 경우)
 // -DONE- $5 * 2 = $10
-// amount를 private으로 만들기
+// -DONE- amount를 private으로 만들기
 // -DONE- Dollar 부작용 (side effect?)
 // Money 반올림?
 // -DONE- equals()
 // hashCode()
 // equal null
 // equal object
+// 5CHF * 2 = 10 CHF
