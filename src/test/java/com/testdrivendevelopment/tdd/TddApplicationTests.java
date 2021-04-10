@@ -40,8 +40,13 @@ class TddApplicationTests {
 
     @Test
     public void testCurrency() {
-//        assertEquals("USD", Money.dollar(1).currency());
+        assertEquals("USD", Money.dollar(1).currency());
         assertEquals("CHF", Money.franc(1).currency());
+    }
+
+    @Test
+    public void testDifferentClassEquality() {
+        assertTrue(new Money(10, "CHF").equals(new Franc(10, "CHF")));
     }
 }
 
@@ -58,7 +63,7 @@ class TddApplicationTests {
 // ------DONE- 5CHF * 2 = 10 CHF
 // Dollar/Franc 중복
 // ------DONE- 공용 equals
-// 공용 times
+// ------DONE- 공용 times
 // ------Done- Franc과 Dollar 비교하기
-// 통화?
+// ------Done- 통화?
 // testFrancMultiplication을 지워야할까?
