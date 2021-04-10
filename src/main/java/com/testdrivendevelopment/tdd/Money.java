@@ -2,8 +2,22 @@ package com.testdrivendevelopment.tdd;
 
 public abstract class Money {
     protected int amount;
+    protected String currency;
 
     abstract Money times(int multiplier);
+
+    Money(int amount, String currency) {
+        this.amount = amount;
+        this.currency = currency;
+    }
+
+    static Money dollar(int amount) {
+        return new Dollar(amount, "USD");
+    }
+
+    static Money franc(int amount) {
+        return new Franc(amount, "CHF");
+    }
 
     @Override
     public boolean equals(Object object) {
@@ -11,11 +25,7 @@ public abstract class Money {
         return amount == money.amount && getClass().equals(money.getClass());
     }
 
-    static Money dollar(int amount) {
-        return new Dollar(amount);
-    }
-
-    static Money franc(int amount) {
-        return new Franc(amount);
+    String currency() {
+        return currency;
     }
 }
