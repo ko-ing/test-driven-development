@@ -34,20 +34,23 @@ class TddApplicationTests {
         assertFalse(new Dollar(5).equals(new Dollar(6)));
         assertTrue(new Franc(5).equals(new Franc(5)));
         assertFalse(new Franc(5).equals(new Franc(6)));
+        assertFalse(new Franc(5).equals(new Dollar(5)));
     }
 }
 
 //TODO:
 // $5 + 10CHF = $10 (환율이 2:1일 경우)
-// -DONE- $5 * 2 = $10
-// -DONE- amount를 private으로 만들기
-// -DONE- Dollar 부작용 (side effect?)
+// ------DONE- $5 * 2 = $10
+// ------DONE- amount를 private으로 만들기
+// ------DONE- Dollar 부작용 (side effect?)
 // Money 반올림?
-// -DONE- equals()
+// ------DONE- equals()
 // hashCode()
 // equal null
 // equal object
-// -DONE- 5CHF * 2 = 10 CHF
+// ------DONE- 5CHF * 2 = 10 CHF
+// Dollar/Franc 중복
 // 공용 equals
 // 공용 times
-// Franc과 Dollar 비교하기
+// ------Done- Franc과 Dollar 비교하기
+// 통화?
