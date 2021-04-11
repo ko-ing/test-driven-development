@@ -41,6 +41,18 @@ class TddApplicationTests {
         assertEquals("USD", Money.dollar(1).currency());
         assertEquals("CHF", Money.franc(1).currency());
     }
+
+    @Test
+    public void testSimpleAddition() {
+        Expression sum = Money.dollar(5).plus(Money.dollar(5));
+        assertEquals(Money.dollar(10), sum);
+
+        Money five = Money.dollar(5);
+        Expression sum1 = five.plus(five);
+        Bank bank = new Bank();
+        Money reduced = bank.reduce(sum1, "USD");
+        assertEquals(Money.dollar(10), reduced);
+    }
 }
 
 //TODO:
@@ -60,3 +72,7 @@ class TddApplicationTests {
 // ------Done- Franc과 Dollar 비교하기
 // ------Done- 통화?
 // ------Done- testFrancMultiplication을 지워야할까?
+
+//TODO: ------------------정리한 리스트---------------------
+// $5 + 10CHF = $10 (환율이 2:1일 경우)
+// $5 + $5 = $10
