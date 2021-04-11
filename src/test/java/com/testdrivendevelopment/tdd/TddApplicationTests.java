@@ -33,8 +33,6 @@ class TddApplicationTests {
     public void testEquality() {
         assertTrue(Money.dollar(5).equals(Money.dollar(5)));
         assertFalse(Money.dollar(5).equals(Money.dollar(6)));
-        assertTrue(Money.franc(5).equals(Money.franc(5)));
-        assertFalse(Money.franc(5).equals(Money.franc(6)));
         assertFalse(Money.franc(5).equals(Money.dollar(5)));
     }
 
@@ -42,11 +40,6 @@ class TddApplicationTests {
     public void testCurrency() {
         assertEquals("USD", Money.dollar(1).currency());
         assertEquals("CHF", Money.franc(1).currency());
-    }
-
-    @Test
-    public void testDifferentClassEquality() {
-        assertTrue(new Money(10, "CHF").equals(new Franc(10, "CHF")));
     }
 }
 
@@ -61,9 +54,9 @@ class TddApplicationTests {
 // equal null
 // equal object
 // ------DONE- 5CHF * 2 = 10 CHF
-// Dollar/Franc 중복
+// ------DONE- Dollar/Franc 중복
 // ------DONE- 공용 equals
 // ------DONE- 공용 times
 // ------Done- Franc과 Dollar 비교하기
 // ------Done- 통화?
-// testFrancMultiplication을 지워야할까?
+// ------Done- testFrancMultiplication을 지워야할까?
