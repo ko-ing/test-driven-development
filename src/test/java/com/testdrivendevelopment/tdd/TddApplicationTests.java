@@ -13,6 +13,10 @@ class TddApplicationTests {
         testFrancMultiplication();
         testEquality();
         testCurrency();
+        testSimpleAddition();
+        testPlusReturnsSum();
+        testReduceSum();
+        testReduceMoney();
     }
 
     @Test
@@ -44,14 +48,35 @@ class TddApplicationTests {
 
     @Test
     public void testSimpleAddition() {
-        Expression sum = Money.dollar(5).plus(Money.dollar(5));
-        assertEquals(Money.dollar(10), sum);
-
         Money five = Money.dollar(5);
-        Expression sum1 = five.plus(five);
+        Expression sum = five.plus(five);
         Bank bank = new Bank();
-        Money reduced = bank.reduce(sum1, "USD");
+        Money reduced = bank.reduce(sum, "USD");
         assertEquals(Money.dollar(10), reduced);
+    }
+
+    @Test
+    public void testPlusReturnsSum() {
+        Money five = Money.dollar(5);
+        Expression result = five.plus(five);
+        Sum sum = (Sum) result;
+        assertEquals(five, sum.augend);
+        assertEquals(five, sum.addend);
+    }
+
+    @Test
+    public void testReduceSum() {
+        Expression sum = new Sum(Money.dollar(3), Money.dollar(4));
+        Bank bank = new Bank();
+        Money result = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(7), result);
+    }
+
+    @Test
+    public void testReduceMoney() {
+        Bank bank = new Bank();
+        Money result = bank.reduce(Money.dollar(1), "USD");
+        assertEquals(Money.dollar(1), result);
     }
 }
 
@@ -76,3 +101,5 @@ class TddApplicationTests {
 //TODO: ------------------정리한 리스트---------------------
 // $5 + 10CHF = $10 (환율이 2:1일 경우)
 // $5 + $5 = $10
+// $5 + $5에서 Money 반환하기
+// Bank.reduce(Money)
