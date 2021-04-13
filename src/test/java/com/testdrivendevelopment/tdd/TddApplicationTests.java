@@ -20,6 +20,7 @@ class TddApplicationTests {
         testReduceDifferentCurrency();
         testIdentityRate();
         testMixedAddition();
+        testSumTimes();
     }
 
     @Test
@@ -104,6 +105,28 @@ class TddApplicationTests {
         Money result = bank.reduce(fiveBucks.plus(tenFrancs), "USD");
         assertEquals(Money.dollar(10), result);
     }
+
+    @Test
+    public void testSumPlusMoney() {
+        Expression fiveBucks = Money.dollar(5);
+        Expression tenFrancs = Money.franc(10);
+        Bank bank = new Bank();
+        bank.addRate("CHF","USD",2);
+        Expression sum = new Sum(fiveBucks, tenFrancs).plus(fiveBucks);
+        Money result = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(15), result);
+    }
+
+    @Test
+    public void testSumTimes() {
+        Expression fiveBucks = Money.dollar(5);
+        Expression tenFrancs = Money.franc(10);
+        Bank bank = new Bank();
+        bank.addRate("CHF","USD",2);
+        Expression sum = new Sum(fiveBucks, tenFrancs).times(2);
+        Money result = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(20), result);
+    }
 }
 
 //TODO:
@@ -127,9 +150,9 @@ class TddApplicationTests {
 //TODO: ------------------정리한 리스트---------------------
 // ------Done- $5 + 10CHF = $10 (환율이 2:1일 경우)
 // ------Done- $5 + $5 = $10
-// $5 + $5에서 Money 반환하기
+// ------Done- $5 + $5에서 Money 반환하기
 // ------Done- Bank.reduce(Money)
 // ------Done- Money에 대한 통화  변환을 수행하는 Reduce
 // ------Done- Reduce(Bank, String)
-// Sum.plus
-// Expression.times
+// ------Done- Sum.plus
+// ------Done- Expression.times
