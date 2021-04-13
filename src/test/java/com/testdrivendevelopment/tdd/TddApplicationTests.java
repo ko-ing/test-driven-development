@@ -17,6 +17,7 @@ class TddApplicationTests {
         testPlusReturnsSum();
         testReduceSum();
         testReduceMoney();
+        testReduceDifferentCurrency();
     }
 
     @Test
@@ -78,6 +79,19 @@ class TddApplicationTests {
         Money result = bank.reduce(Money.dollar(1), "USD");
         assertEquals(Money.dollar(1), result);
     }
+
+    @Test
+    public void testReduceDifferentCurrency() {
+        Bank bank = new Bank();
+        bank.addRate("CHF", "USD", 2);
+        Money result = bank.reduce(Money.franc(2), "USD");
+        assertEquals(Money.dollar(1), result);
+    }
+
+    @Test
+    public void testIdentityRate() {
+        assertEquals(1, new Bank().rate("USD", "USD"));
+    }
 }
 
 //TODO:
@@ -100,8 +114,8 @@ class TddApplicationTests {
 
 //TODO: ------------------정리한 리스트---------------------
 // $5 + 10CHF = $10 (환율이 2:1일 경우)
-// $5 + $5 = $10
+// ------Done- $5 + $5 = $10
 // $5 + $5에서 Money 반환하기
 // ------Done- Bank.reduce(Money)
-// Money에 대한 통화  변환을 수행하는 Reduce
-// Reduce(Bank, String)
+// ------Done- Money에 대한 통화  변환을 수행하는 Reduce
+// ------Done- Reduce(Bank, String)
